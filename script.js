@@ -60,11 +60,45 @@ while(true) {
             console.log(`Resultado: ${numero1 * numero2}`);
             break;
         case 4:
-            if (numero2 === 0) {
-                console.log("Erro: divisão por zero não é permitida.");
-            } else {
+            try {
+                if (numero2 === 0) {
+                    throw new Error("Erro: Não é possível dividir por zero.");
+                }
                 console.log(`Resultado: ${numero1 / numero2}`);
+            } catch (erro) {
+                console.log(erro.message);
+            } finally {
+                console.log("Operação de divisão concluída.");
             }
             break;
+
+        default:
+            console.log("Opção inválida.");
+        // case 4:
+        //     if (numero2 === 0) {
+        //         console.log("Erro: divisão por zero não é permitida.");
+        //     } else {
+        //         console.log(`Resultado: ${numero1 / numero2}`);
+        //     }
+        //     break;
     };
 };
+
+
+// function dividir(a, b) {
+//     try {
+//         if (b === 0) {
+//             throw new Error("Erro: Não é possível dividir por zero.");
+//         }
+//         console.log(`Resultado: ${a / b}`);
+//     } catch (erro) {
+//         console.log(erro.message);
+//     } finally {
+//         console.log("Operação concluída.");
+//     }
+// }
+
+// // Exemplo de uso:
+// const numero1 = Number(prompt("Digite o primeiro número: "));
+// const numero2 = Number(prompt("Digite o segundo número: "));
+// dividir(numero1, numero2);

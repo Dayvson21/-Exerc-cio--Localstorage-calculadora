@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Armazenar Nome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      cursor: pointer;
+    }
+    #exibirNome {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite seu nome:</h2>
+  <input type="text" id="nomeInput" placeholder="Seu nome aqui">
+  <button onclick="salvarNome()">Salvar Nome</button>
+
+  <div id="exibirNome"></div>
+
+  <script>
+    // Função para salvar no localStorage
+    function salvarNome() {
+      const nome = document.getElementById("nomeInput").value;
+      if (nome.trim() !== "") {
+        localStorage.setItem("nomeUsuario", nome);
+        exibirNomeNaTela(nome);
+      } else {
+        alert("Por favor, digite um nome válido.");
+      }
+    }
+
+    // Função para exibir o nome na tela
+    function exibirNomeNaTela(nome) {
+      const areaExibicao = document.getElementById("exibirNome");
+      areaExibicao.textContent = "Nome armazenado: " + nome;
+    }
+
+    // Ao carregar a página, recuperar o nome armazenado (se existir)
+    window.onload = function () {
+      const nomeSalvo = localStorage.getItem("nomeUsuario");
+      if (nomeSalvo) {
+        exibirNomeNaTela(nomeSalvo);
+      }
+    };
+  </script>
+
+</body>
+</html>

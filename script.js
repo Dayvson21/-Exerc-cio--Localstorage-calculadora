@@ -26,7 +26,7 @@
 // console.log("3 - multiplicação");
 // console.log("4 - divisão");
 
-while(true) {
+/*while(true) {
     console.log("---Menu---");
     console.log("1 - soma");
     console.log("2 - subtração");
@@ -82,23 +82,45 @@ while(true) {
         //     }
         //     break;
     };
+};*/
+
+
+/*function dividir(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error("Erro: Não é possível dividir por zero.");
+        }
+        console.log(`Resultado: ${a / b}`);
+    } catch (erro) {
+        console.log(erro.message);
+    } finally {
+        console.log("Operação concluída.");
+    }
+}
+
+// Exemplo de uso:
+const numero1 = Number(prompt("Digite o primeiro número: "));
+const numero2 = Number(prompt("Digite o segundo número: "));
+dividir(numero1, numero2);*/
+
+const user = {nome: prompt("Nome: "),idade: parseInt(prompt("Sua idade: "))};
+
+let valido = true;
+function validarDados(user) {
+    try {
+        if (typeof user.nome !== "string" ||  user.nome.length < 3) {
+            throw new Error("Error: Nome com mínimo 3 caracteres.");
+        }
+        if (typeof user.idade !== "number" ||  user.idade <= 18) {
+            throw new Error("A idade deve ser maior que 18.")
+        }
+         console.log("Usuário cadastrado.");
+    } catch (erro) {
+        valido = false
+        console.log(erro.message);
+
+    } finally {
+        console.log( valido ? "Os dados do usuário são válidos." : "Dados inválidos");
+    }
 };
-
-
-// function dividir(a, b) {
-//     try {
-//         if (b === 0) {
-//             throw new Error("Erro: Não é possível dividir por zero.");
-//         }
-//         console.log(`Resultado: ${a / b}`);
-//     } catch (erro) {
-//         console.log(erro.message);
-//     } finally {
-//         console.log("Operação concluída.");
-//     }
-// }
-
-// // Exemplo de uso:
-// const numero1 = Number(prompt("Digite o primeiro número: "));
-// const numero2 = Number(prompt("Digite o segundo número: "));
-// dividir(numero1, numero2);
+validarDados(user);
